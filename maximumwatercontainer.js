@@ -4,38 +4,29 @@
 
 // find polose in which store the maximum water
 
-function maximumstorage(arr){
-    let minheight=0;
-    let maxcapacity=1;
-    let maxiwidth=arr.lenght -2
-    let right=arr.lenght;
-    let left=0;
-    
-    while(left<right){
-        if(arr[left]>arr[right]){
-            minheight=arr[right]
-            left--
+function maxArea(height) {
+    let maxWater = 0;
+    let left = 0;
+    let right = height.length - 1;
+
+    while (left < right) {
+        const h = Math.min(height[left], height[right]);
+        const w = right - left;
+        const area = h * w;
+
+        maxWater = Math.max(maxWater, area);
+
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
         }
-        else{
-            minheight=arr[left]
-            right--
-        }
-
-        sum=minheight*maxiwidth
-        
-        if(sum>maxcapacity){
-            maxcapacity=sum
-            maxiwidth--
-        }
-
-
-        
-
     }
+
+    return maxWater;
 }
 
-
-
-
-const data=[9,4,11,4,5,18,15]
-let result=maximumstorage(data)
+// Example usage:
+const heights = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+const result = maxArea(heights);
+console.log("Maximum Area of Water:", result);

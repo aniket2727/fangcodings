@@ -1,0 +1,21 @@
+
+async function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Data fetched!');
+    }, 1000);
+  });
+}
+
+async function fetchDataSequentially() {
+  const result1 = await fetchData();
+  console.log(result1); // Output after 1 second: Data fetched!
+
+  const result2 = await fetchData();
+  console.log(result2); // Output after another second: Data fetched!
+
+
+  console.log("hello world")
+}
+
+fetchDataSequentially();
